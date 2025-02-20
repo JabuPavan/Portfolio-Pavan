@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div id="header">
+   <div class="container"> 
+    <nav>
+        <img src="Images/Pavan_Logo.png" alt="logo">
+        <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fas fa-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
+    </nav>
+    <div class="header-text">
+        <p>FrontEnd Developer</p>
+        <h1>Hi, I'm <span>Pavan</span><br> From Hyderabad</h1>
+    </div>
+    </div>
+    </div>
+    <!------about---->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Images/IMG_3698-Photoroom (1).png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am a front-end developer with experience at OHOINDIA Life Tech Pvt Ltd., where I built an admin portal to enhance operations. I’ve also completed freelance and personal projects, showcasing my skills in creating user-friendly web applications. 
+                        Based in Hyderabad, India, I am passionate about delivering intuitive digital solutions.</p>
+
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links"onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>UX/UI</span><br>Designing Web/App interfaces</li>
+                                <li><span>Web Development</span><br>Web app development</li>
+                                <li><span>App Development</span><br>Building Android/IOS apps</li>
+                                
+                            </ul>
+                        </div>
+                       
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>2024-2025</span><br>Software engineer at OHOINDIA life Tech Pvt LTD</li>
+                                <li><span>2020-2021</span><br>XML developer at Vainquere corporate services</li>
+                                <li><span>2021-2022</span><br>Digital marketing executive </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2020-2023</span><br>Computer Science Engineering(Btech) Hyderabad</li>
+                                <li><span>2015-2018</span><br>Diploma from NOBLE Polytechnic College</li>
+                                <li><span>2023-2023</span><br>AWS Training Institute</li>
+                                <li><span>2020-2020</span><br>Web Designing Training Institute Ameerpet</li>
+                                
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!----Services-->
+
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>I create responsive and visually appealing websites that work well on all devices. 
+                        My focus is on designing websites that are easy to navigate and meet the needs of both businesses and users.</p>
+                        <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop-simple"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>I design user-friendly interfaces that are simple to use and visually engaging. 
+                        My goal is to make digital platforms more enjoyable and efficient for users.</p>
+                        <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-brands fa-app-store"></i>
+                    <h2>App Design</h2>
+                    <p>I create modern and functional mobile app designs that prioritize usability and aesthetics. 
+                        My designs aim to provide a smooth and intuitive experience for app users.</p>
+                        <a href="#">Learn more</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- -------Portfolio----- -->
+
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">My Work</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="Images/pexels-sarahdorweiler-.jpg" >
+                <div class="layer">
+                    <h3>Stories App</h3>
+                    <p>An app for children to explore and enjoy fantasy 
+                    and historical stories in an engaging way.</p>
+                    <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="Images/pexels-regeci.jpg" >
+                <div class="layer">
+                    <h3>Real Estate Website</h3>
+                    <p>A dynamic web app to showcase and manage 
+                    business profiles efficiently and interactively.</p>
+                    <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="Images/pexels-jessbaileydesign-.jpg" >
+                <div class="layer">
+                    <h3>Online shopping App</h3>
+                    <p>A platform for online shopping with features 
+                    to browse, purchase, and track orders effortlessly.
+                    </p>
+                    <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">See more</a>
+    </div>
+</div>
+<!-- ------contact---- -->
+
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>jabupavanpatel@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>9502827624</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100006434600231"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/pavan_______28/?igsh=MXF1eHEydnRxeno3YQ%3D%3D&utm_source=qr#"><i class="fa-brands fa-instagram"></i></a>
+                    <!-- <a href="#"><i class="fa-brands fa-twitter-square"></i></a> -->
+                    <a href="https://www.linkedin.com/in/jabu-pavan-a627311a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app "><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="Images/Pavan-CV.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required >
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                   <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                   <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright @Pavan.</p>
+    </div>
+</div>
+
+    <script>
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+
+        }
+
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyfVrAwJQZj-jBjzouqhFygqlHxGsvurTk_tuEz1hCBmoL9V0-bUUj4wyfi-il1aN7PNA/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Submited Successfully."
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
