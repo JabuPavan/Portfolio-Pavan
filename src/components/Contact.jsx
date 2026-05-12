@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Mail, Phone, Linkedin, Github, Instagram, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, LinkedinIcon, GithubIcon, InstagramIcon, Send, Loader2 } from 'lucide-react';
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfVrAwJQZj-jBjzouqhFygqlHxGsvurTk_tuEz1hCBmoL9V0-bUUj4wyfi-il1aN7PNA/exec';
 
@@ -51,9 +51,9 @@ const Contact = () => {
             </div>
 
             <div className="social-links mt-2">
-              <a href="https://www.linkedin.com/in/jabu-pavan-a627311a2/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="social-btn glass"><Linkedin size={20} /></a>
-              <a href="https://github.com/JabuPavan" target="_blank" rel="noreferrer" aria-label="GitHub" className="social-btn glass"><Github size={20} /></a>
-              <a href="https://www.instagram.com/pavan_______28" target="_blank" rel="noreferrer" aria-label="Instagram" className="social-btn glass"><Instagram size={20} /></a>
+              <a href="https://www.linkedin.com/in/jabu-pavan-a627311a2/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="social-btn glass"><LinkedinIcon size={20} /></a>
+              <a href="https://github.com/JabuPavan" target="_blank" rel="noreferrer" aria-label="GitHub" className="social-btn glass"><GithubIcon size={20} /></a>
+              <a href="https://www.instagram.com/pavan_______28" target="_blank" rel="noreferrer" aria-label="Instagram" className="social-btn glass"><InstagramIcon size={20} /></a>
             </div>
           </div>
 
