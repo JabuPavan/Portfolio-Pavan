@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Mail, Phone, LinkedinIcon, GithubIcon, InstagramIcon, Send, Loader2 } from 'lucide-react';
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfVrAwJQZj-jBjzouqhFygqlHxGsvurTk_tuEz1hCBmoL9V0-bUUj4wyfi-il1aN7PNA/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTPTwcyR-wPF-esGIifb_zuRZEiOjwcplIr50_S6yeolV7JnU9hokxjZnzeNCAjPQxLw/exec';
 
 const Contact = () => {
   const [status, setStatus] = useState({ msg: '', color: '' });
