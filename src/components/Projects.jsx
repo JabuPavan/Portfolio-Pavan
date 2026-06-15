@@ -53,7 +53,7 @@ const projects = [
     problem: 'Required a premium, creative portfolio for an interior design studio to showcase high-end visual work.',
     solution: 'Built a sleek, modern website with smooth transitions, interactive elements, and a focus on visual impact.',
     tech: ['React.js', 'Framer Motion', 'CSS'],
-    link: 'https://s16-design-studio.vercel.app',
+    link: 'https://www.s16designstudio.com',
     linkLabel: 'View Live Site',
   },
   {

@@ -14,10 +14,10 @@ const Contact = () => {
     setStatus({ msg: '', color: '' });
 
     try {
-      await fetch(SCRIPT_URL, { 
-        method: 'POST', 
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
         mode: 'no-cors',
-        body: new FormData(formRef.current) 
+        body: new FormData(formRef.current)
       });
       setStatus({ msg: "Message submitted successfully! I'll get back to you soon.", color: 'var(--success-color, #10b981)' });
       formRef.current.reset();
