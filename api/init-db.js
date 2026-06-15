@@ -1,9 +1,18 @@
 import { Pool } from 'pg';
 
 export default async function handler(request, response) {
-  // Use POSTGRES_URL which is provided by Vercel Integrations (Neon or Supabase)
+  // Try common Vercel/Supabase environment variable names
+  const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.SUPABASE_DATABASE_URL;
+
+  if (!connectionString) {
+    return response.status(500).json({ error: 'Database connection string (POSTGRES_URL or DATABASE_URL) is missing from Vercel Environment Variables.' });
+  }
+
+  // Bypass strict TLS verification for Supabase connection issues
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
   const pool = new Pool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString,
     ssl: { rejectUnauthorized: false }
   });
 

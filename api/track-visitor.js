@@ -6,8 +6,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.SUPABASE_DATABASE_URL;
+
+  if (!connectionString) {
+    return res.status(500).json({ error: 'Database connection string is missing.' });
+  }
+
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
   const pool = new Pool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString,
     ssl: { rejectUnauthorized: false }
   });
 
