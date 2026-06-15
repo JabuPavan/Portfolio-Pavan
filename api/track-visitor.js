@@ -1,10 +1,15 @@
-import { sql } from '@vercel/postgres';
+import { Pool } from 'pg';
 import { v4 as uuidv4 } from 'uuid';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
+
+  const pool = new Pool({
+    connectionString: process.env.POSTGRES_URL,
+    ssl: { rejectUnauthorized: false }
+  });
 
   try {
     const { device_type, browser, os, referrer, landing_page } = req.body;
@@ -25,24 +30,23 @@ export default async function handler(req, res) {
     const thirtyMinutesAgo = new Date(Date.now() - 30 * 60 * 1000).toISOString();
     
     // Check for recent visits from the same IP
-    const { rowCount } = await sql`
-      SELECT 1 FROM visitors 
-      WHERE ip_address = ${ip_address} 
-      AND visited_at >= ${thirtyMinutesAgo}
-      LIMIT 1
-    `;
+    const recentCheck = await pool.query(
+      `SELECT 1 FROM visitors WHERE ip_address = $1 AND visited_at >= $2 LIMIT 1`,
+      [ip_address, thirtyMinutesAgo]
+    );
 
-    if (rowCount > 0) {
+    if (recentCheck.rowCount > 0) {
       return res.status(200).json({ message: 'Duplicate visit ignored' });
     }
 
     const id = uuidv4();
     
     // Save to Database
-    await sql`
-      INSERT INTO visitors (id, ip_address, country, state, city, device_type, browser, os, referrer, landing_page)
-      VALUES (${id}, ${ip_address}, ${country}, ${state}, ${city}, ${device_type}, ${browser}, ${os}, ${referrer}, ${landing_page})
-    `;
+    await pool.query(
+      `INSERT INTO visitors (id, ip_address, country, state, city, device_type, browser, os, referrer, landing_page)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      [id, ip_address, country, state, city, device_type, browser, os, referrer, landing_page]
+    );
 
     // Send Telegram Notification
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -82,5 +86,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Error tracking visitor:', error);
     return res.status(500).json({ error: 'Internal server error' });
+  } finally {
+    await pool.end();
   }
 }

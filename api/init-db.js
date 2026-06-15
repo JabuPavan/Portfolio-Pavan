@@ -1,8 +1,14 @@
-import { sql } from '@vercel/postgres';
+import { Pool } from 'pg';
 
 export default async function handler(request, response) {
+  // Use POSTGRES_URL which is provided by Vercel Integrations (Neon or Supabase)
+  const pool = new Pool({
+    connectionString: process.env.POSTGRES_URL,
+    ssl: { rejectUnauthorized: false }
+  });
+
   try {
-    const result = await sql`
+    const result = await pool.query(`
       CREATE TABLE IF NOT EXISTS visitors (
         id UUID PRIMARY KEY,
         ip_address VARCHAR(45) NOT NULL,
@@ -16,15 +22,18 @@ export default async function handler(request, response) {
         landing_page TEXT,
         visited_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
       );
-    `;
+    `);
     
     // Create an index on ip_address and visited_at for faster anti-spam queries
-    await sql`
+    await pool.query(`
       CREATE INDEX IF NOT EXISTS idx_visitors_ip_time ON visitors(ip_address, visited_at DESC);
-    `;
+    `);
 
-    return response.status(200).json({ message: 'Database initialized successfully', result });
+    return response.status(200).json({ message: 'Database initialized successfully' });
   } catch (error) {
+    console.error('Init DB Error:', error);
     return response.status(500).json({ error: error.message });
+  } finally {
+    await pool.end();
   }
 }
