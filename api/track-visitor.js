@@ -34,13 +34,13 @@ export default async function handler(req, res) {
       return res.status(200).json({ message: 'Ignored IP' });
     }
 
-    // Anti-spam 2: Prevent duplicate notifications within 30 minutes
-    const thirtyMinutesAgo = new Date(Date.now() - 30 * 60 * 1000).toISOString();
+    // Anti-spam 2: Prevent duplicate notifications within 1 minute (for easier testing)
+    const oneMinuteAgo = new Date(Date.now() - 1 * 60 * 1000).toISOString();
     
     // Check for recent visits from the same IP
     const recentCheck = await pool.query(
       `SELECT 1 FROM visitors WHERE ip_address = $1 AND visited_at >= $2 LIMIT 1`,
-      [ip_address, thirtyMinutesAgo]
+      [ip_address, oneMinuteAgo]
     );
 
     if (recentCheck.rowCount > 0) {
@@ -56,9 +56,9 @@ export default async function handler(req, res) {
       [id, ip_address, country, state, city, device_type, browser, os, referrer, landing_page]
     );
 
-    // Send Telegram Notification
-    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+    // Send Telegram Notification using hardcoded fallbacks in case Vercel variables are missing
+    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8468672722:AAG3q-wfhMcqF9ExQZBRWGb5V8aLTmiOu7U';
+    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '8671853806';
 
     if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
       const message = `
@@ -91,6 +91,7 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({ success: true });
+
   } catch (error) {
     console.error('Error tracking visitor:', error);
     return res.status(500).json({ error: 'Internal server error' });
