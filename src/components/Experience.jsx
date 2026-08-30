@@ -3,6 +3,12 @@ import { Building2 } from 'lucide-react';
 
 const experiences = [
   {
+    date: 'May 2026 – Present',
+    role: 'Frontend Developer',
+    company: 'Prospect Analytics Company, Hyderabad',
+    desc: 'Working as a Frontend Developer building robust applications using React, React Native, Next.js, and Node.js.',
+  },
+  {
     date: 'Feb 2025 – Present',
     role: 'Frontend Developer / UI Designer',
     company: 'Gannetz Technologies Pvt Ltd',
