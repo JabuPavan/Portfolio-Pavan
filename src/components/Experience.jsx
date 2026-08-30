@@ -9,7 +9,7 @@ const experiences = [
     desc: 'Working as a Frontend Developer building robust applications using React, React Native, Next.js, and Node.js.',
   },
   {
-    date: 'Feb 2025 – Present',
+    date: 'Feb 2025 – May 2026',
     role: 'Frontend Developer / UI Designer',
     company: 'Gannetz Technologies Pvt Ltd',
     desc: 'Designing modern website interfaces in Figma and converting them into responsive React.js applications. Focused on performance, responsiveness, and user-friendly design systems.',

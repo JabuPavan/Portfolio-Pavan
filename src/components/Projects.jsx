@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
 const projects = [
@@ -92,9 +92,30 @@ const projects = [
     link: 'https://sri-ram-interiors.vercel.app',
     linkLabel: 'View Live Site',
   },
+  {
+    title: 'GRapid Engineering (GEPL)',
+    role: 'Frontend Developer',
+    problem: 'Needed a professional web presence outlining engineering services, procedures, and quality guidelines.',
+    solution: 'Designed in Figma and developed a responsive website using React.js, deployed on cPanel.',
+    tech: ['Figma', 'React.js', 'cPanel'],
+    link: 'https://grapidengineering.com/',
+    linkLabel: 'View Live Site',
+  },
+  {
+    title: 'Line Theories',
+    role: 'Web Developer',
+    problem: 'Required a modern online portfolio for an interior design studio to showcase projects.',
+    solution: 'Currently developing a web presence with React.js focused on aesthetics and user experience.',
+    tech: ['React.js', 'Web Development'],
+    link: '#',
+    linkLabel: 'Under Development',
+  },
 ];
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section id="projects" className="projects section-padding">
       <div className="container animate-on-scroll">
@@ -103,7 +124,7 @@ const Projects = () => {
           <p className="section-subtitle">A look into my recent design and development projects.</p>
         </div>
         <div className="projects-grid">
-          {projects.map((project, i) => (
+          {visibleProjects.map((project, i) => (
             <div key={i} className="project-card glass rounded-xl">
               <div className="project-content card-padding">
                 <h3 className="project-title">{project.title}</h3>
@@ -122,6 +143,18 @@ const Projects = () => {
             </div>
           ))}
         </div>
+        
+        {projects.length > 3 && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+            <button 
+              onClick={() => setShowAll(!showAll)} 
+              className="btn btn-primary"
+              style={{ padding: '0.75rem 2rem', background: 'var(--primary-color, #4f46e5)', color: 'white', border: 'none', borderRadius: '0.5rem', cursor: 'pointer', fontWeight: 'bold' }}
+            >
+              {showAll ? 'Show Less' : 'View All Projects'}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
