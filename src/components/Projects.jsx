@@ -65,6 +65,33 @@ const projects = [
     link: 'https://cycle-tray-49996514.figma.site',
     linkLabel: 'View Figma Prototype',
   },
+  {
+    title: 'Scientra Journals',
+    role: 'Fullstack Developer',
+    problem: 'Needed an international scholarly publishing platform to advance scientific knowledge and research communication.',
+    solution: 'Developed a robust platform using React and Next.js, currently implementing backend integrations.',
+    tech: ['React.js', 'Next.js'],
+    link: 'https://scientrajournals.org/',
+    linkLabel: 'View Live Site',
+  },
+  {
+    title: 'Arenova (by Novarena)',
+    role: 'Fullstack Developer',
+    problem: 'Required a mobile app for coach registrations, enabling parents and users to find coaches and track sports training.',
+    solution: 'Building a comprehensive sports training application connecting coaches with trainees.',
+    tech: ['Mobile App', 'Fullstack Development'],
+    link: '#',
+    linkLabel: 'Under Development',
+  },
+  {
+    title: 'Sri Ram Interiors',
+    role: 'Web Developer',
+    problem: 'Needed a professional website for an interior works business to showcase their portfolio.',
+    solution: 'Designed and developed a responsive website deployed on Vercel.',
+    tech: ['Web Development', 'Vercel'],
+    link: 'https://sri-ram-interiors.vercel.app',
+    linkLabel: 'View Live Site',
+  },
 ];
 
 const Projects = () => {
